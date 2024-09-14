@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Begmuhommet Jumayev](https://up.htmlacademy.ru/nodejs-api/8/user/504637).
-* Наставник: `Неизвестно`.
+- Студент: [Begmuhommet Jumayev](https://up.htmlacademy.ru/nodejs-api/8/user/504637).
+- Наставник: `Владислав Поклонский`.
 
 ---
 

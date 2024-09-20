@@ -25,12 +25,9 @@ export class TSVFileReader implements IFileReader {
     const [id, name, description, price, image, categoriesStr] = line.split('\t');
 
     return {
-      id,
       name,
       description,
       price: parseFloat(price),
-      image,
-      categories: this.parseCategories(categoriesStr),
     };
   };
 

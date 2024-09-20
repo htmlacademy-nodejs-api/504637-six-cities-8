@@ -1,4 +1,4 @@
-#!/usr/bin/env/node  -> sheband, will help with running the script without node
+#!/opt/homebrew/opt/nvm/versions/node/v18.20.1/bin/node
 import { CliApplication, HelpCommand, ImportCommand, VersionCommand } from './cli/index.js';
 
 

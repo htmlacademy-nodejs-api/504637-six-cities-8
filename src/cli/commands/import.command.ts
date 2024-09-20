@@ -16,6 +16,5 @@ export class ImportCommand implements Command {
     }catch(e){
       console.error(e);
     }
-    console.info(params);
   }
 }

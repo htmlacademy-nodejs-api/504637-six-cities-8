@@ -18,6 +18,7 @@
     "mock:server": "json-server mocks/mock-server-data.json --port 4000 --host localhost"
   },
   "devDependencies": {
+    "@types/got": "9.6.12",
     "@types/node": "20.12.7",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "chalk": "^5.3.0",
-    "dayjs": "1.11.13"
+    "dayjs": "1.11.13",
+    "got": "14.4.2"
   }
 }

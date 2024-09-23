@@ -1,3 +1,3 @@
-export interface IFileGenerator {
+export interface IOfferGenerator {
   generate(): string;
 }

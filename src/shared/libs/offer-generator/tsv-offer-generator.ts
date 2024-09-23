@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 import { generateRandomValue, getRandomItem, getRandomItems } from '../../helpers/common.js';
 import { TMockServerData } from '../../types/mock-server-data.js';
 import { TOfferType } from '../../types/offer.type.js';
-import { IFileGenerator } from './file-generator.interface.js';
+import { IOfferGenerator } from './file-generator.interface.js';
 
 const MIN_PRICE = 100;
 const MAX_PRICE = 2000;
@@ -10,7 +10,7 @@ const MAX_PRICE = 2000;
 const FIRST_WEEK_DAY = 1;
 const LAST_WEEK_DAY = 7;
 
-export class FileGenerator implements IFileGenerator {
+export class TSVOfferGenerator implements IOfferGenerator {
   constructor(private readonly mockData: TMockServerData) {}
 
   public generate() {

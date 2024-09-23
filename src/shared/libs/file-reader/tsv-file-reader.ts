@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
-import { TOffer } from '../types/index.js';
-import { TOfferType } from '../types/offer.type.js';
+import { TOffer } from '../../types/index.js';
+import { TOfferType } from '../../types/offer.type.js';
 import { IFileReader } from './file-reader.interface.js';
 
 export class TSVFileReader implements IFileReader {

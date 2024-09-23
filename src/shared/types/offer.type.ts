@@ -1,5 +1,5 @@
 
-export type TOfferType = 'apartment' | 'house' | 'room' | 'hotel';
+export type TOfferType = 'rent' | 'sale';
 export type TOfferCoordinates = { latitude: number; longitude: number };
 
 export type TOffer = {

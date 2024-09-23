@@ -1,3 +1,3 @@
-export { IFileReader } from './file-reader.interface.js';
-export { TSVFileReader } from './tsv-file-reader.js';
+export { IFileReader } from './file-reader/file-reader.interface.js';
+export { TSVFileReader } from './file-reader/tsv-file-reader.js';
 

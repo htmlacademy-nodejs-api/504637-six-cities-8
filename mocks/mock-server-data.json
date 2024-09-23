@@ -1,0 +1,264 @@
+{
+  "offers": [
+    {
+      "name": "name",
+      "description": "description",
+      "publishedAt": null,
+      "city": "city",
+      "preview": "preview",
+      "images": ["images"],
+      "isPremium": false,
+      "isFeatured": false,
+      "rating": null,
+      "type": "type",
+      "rooms": null,
+      "guests": null,
+      "features": ["items"],
+      "user": "author",
+      "comments": null,
+      "coordinates": {
+        "latitude": null,
+        "longitude": null
+      },
+      "price": null
+    },
+    {
+      "name": "Sunny Apartment in Downtown",
+      "description": "Spacious and modern apartment located in the heart of the city. Perfect for long stays and families.",
+      "publishedAt": "2024-09-17T00:00:00.000Z",
+      "city": "New York",
+      "preview": "preview1.jpg",
+      "images": ["image1.jpg", "image2.jpg"],
+      "isPremium": false,
+      "isFeatured": true,
+      "rating": 4,
+      "type": "apartment",
+      "rooms": 3,
+      "guests": 5,
+      "features": ["Breakfast", "Air conditioning", "Fridge"],
+      "user": "John Doe",
+      "comments": 10,
+      "coordinates": {
+        "latitude": 40.712776,
+        "longitude": -74.005974
+      },
+      "price": 1200
+    },
+    {
+      "name": "Cozy Family House",
+      "description": "Beautiful family home with a large backyard and all the necessary amenities for a comfortable stay.",
+      "publishedAt": "2024-08-25T00:00:00.000Z",
+      "city": "Los Angeles",
+      "preview": "preview2.jpg",
+      "images": ["image3.jpg", "image4.jpg"],
+      "isPremium": true,
+      "isFeatured": false,
+      "rating": 5,
+      "type": "house",
+      "rooms": 4,
+      "guests": 8,
+      "features": ["Washer", "Towels", "Air conditioning"],
+      "user": "Jane Smith",
+      "comments": 15,
+      "coordinates": {
+        "latitude": 34.052235,
+        "longitude": -118.243683
+      },
+      "price": 2500
+    },
+    {
+      "name": "Budget Room in Quiet Area",
+      "description": "Compact and affordable room for solo travelers. Located in a quiet neighborhood with easy access to public transportation.",
+      "publishedAt": "2024-07-30T00:00:00.000Z",
+      "city": "Chicago",
+      "preview": "preview3.jpg",
+      "images": ["image5.jpg", "image6.jpg"],
+      "isPremium": false,
+      "isFeatured": false,
+      "rating": 3,
+      "type": "room",
+      "rooms": 1,
+      "guests": 2,
+      "features": ["Laptop friendly workspace", "Towels", "Fridge"],
+      "user": "Mike Johnson",
+      "comments": 5,
+      "coordinates": {
+        "latitude": 41.878113,
+        "longitude": -87.629799
+      },
+      "price": 500
+    },
+    {
+      "name": "Luxury Hotel Suite",
+      "description": "An exclusive hotel suite with stunning views of the city skyline. Includes premium services and amenities for a luxurious stay.",
+      "publishedAt": "2024-09-01T00:00:00.000Z",
+      "city": "Miami",
+      "preview": "preview4.jpg",
+      "images": ["image7.jpg", "image8.jpg"],
+      "isPremium": true,
+      "isFeatured": true,
+      "rating": 5,
+      "type": "hotel",
+      "rooms": 2,
+      "guests": 4,
+      "features": [
+        "Breakfast",
+        "Air conditioning",
+        "Baby seat",
+        "Washer",
+        "Towels"
+      ],
+      "user": "Sarah Lee",
+      "comments": 20,
+      "coordinates": {
+        "latitude": 25.761681,
+        "longitude": -80.191788
+      },
+      "price": 5000
+    },
+    {
+      "name": "Beachfront House",
+      "description": "Charming beachfront property with private access to the beach and all modern conveniences. Ideal for family vacations.",
+      "publishedAt": "2024-08-10T00:00:00.000Z",
+      "city": "Malibu",
+      "preview": "preview5.jpg",
+      "images": ["image9.jpg", "image10.jpg"],
+      "isPremium": true,
+      "isFeatured": true,
+      "rating": 5,
+      "type": "house",
+      "rooms": 5,
+      "guests": 10,
+      "features": [
+        "Breakfast",
+        "Air conditioning",
+        "Washer",
+        "Towels",
+        "Fridge"
+      ],
+      "user": "Tom Hanks",
+      "comments": 30,
+      "coordinates": {
+        "latitude": 34.025922,
+        "longitude": -118.779757
+      },
+      "price": 10000
+    },
+    {
+      "name": "Modern Apartment with Balcony",
+      "description": "A stylish apartment with a spacious balcony overlooking the city. Equipped with all essentials for a comfortable stay.",
+      "publishedAt": "2024-07-15T00:00:00.000Z",
+      "city": "San Francisco",
+      "preview": "preview6.jpg",
+      "images": ["image11.jpg", "image12.jpg"],
+      "isPremium": false,
+      "isFeatured": false,
+      "rating": 4,
+      "type": "apartment",
+      "rooms": 2,
+      "guests": 3,
+      "features": ["Air conditioning", "Laptop friendly workspace", "Fridge"],
+      "user": "Emily Clark",
+      "comments": 12,
+      "coordinates": {
+        "latitude": 37.774929,
+        "longitude": -122.419418
+      },
+      "price": 2000
+    },
+    {
+      "name": "Room in Shared House",
+      "description": "A clean and affordable room in a shared house, suitable for students or budget travelers.",
+      "publishedAt": "2024-08-05T00:00:00.000Z",
+      "city": "Boston",
+      "preview": "preview7.jpg",
+      "images": ["image13.jpg", "image14.jpg"],
+      "isPremium": false,
+      "isFeatured": false,
+      "rating": 3,
+      "type": "room",
+      "rooms": 1,
+      "guests": 1,
+      "features": ["Laptop friendly workspace", "Towels", "Washer"],
+      "user": "Robert Miles",
+      "comments": 8,
+      "coordinates": {
+        "latitude": 42.360081,
+        "longitude": -71.058884
+      },
+      "price": 600
+    },
+    {
+      "name": "Rustic Mountain Cabin",
+      "description": "A cozy and rustic cabin in the mountains, perfect for nature lovers. Includes a fireplace and outdoor seating area.",
+      "publishedAt": "2024-06-20T00:00:00.000Z",
+      "city": "Aspen",
+      "preview": "preview8.jpg",
+      "images": ["image15.jpg", "image16.jpg"],
+      "isPremium": true,
+      "isFeatured": true,
+      "rating": 5,
+      "type": "house",
+      "rooms": 4,
+      "guests": 6,
+      "features": ["Breakfast", "Washer", "Towels", "Fridge"],
+      "user": "Anna Thomas",
+      "comments": 25,
+      "coordinates": {
+        "latitude": 39.191097,
+        "longitude": -106.817539
+      },
+      "price": 4000
+    },
+    {
+      "name": "Studio Apartment Near Park",
+      "description": "A compact studio apartment located near a beautiful park. Ideal for couples or solo travelers.",
+      "publishedAt": "2024-07-05T00:00:00.000Z",
+      "city": "Portland",
+      "preview": "preview9.jpg",
+      "images": ["image17.jpg", "image18.jpg"],
+      "isPremium": false,
+      "isFeatured": false,
+      "rating": 3,
+      "type": "apartment",
+      "rooms": 1,
+      "guests": 2,
+      "features": ["Air conditioning", "Towels", "Fridge"],
+      "user": "Chris Evans",
+      "comments": 3,
+      "coordinates": {
+        "latitude": 45.505106,
+        "longitude": -122.675026
+      },
+      "price": 900
+    },
+    {
+      "name": "Elegant Hotel Room",
+      "description": "An elegant room in a 5-star hotel with top-notch amenities and service. Suitable for business trips or leisure stays.",
+      "publishedAt": "2024-08-20T00:00:00.000Z",
+      "city": "Las Vegas",
+      "preview": "preview10.jpg",
+      "images": ["image19.jpg", "image20.jpg"],
+      "isPremium": true,
+      "isFeatured": true,
+      "rating": 5,
+      "type": "hotel",
+      "rooms": 1,
+      "guests": 2,
+      "features": [
+        "Breakfast",
+        "Air conditioning",
+        "Washer",
+        "Baby seat",
+        "Fridge"
+      ],
+      "user": "Jessica Williams",
+      "comments": 50,
+      "coordinates": {
+        "latitude": 36.169941,
+        "longitude": -115.139832
+      },
+      "price": 7000
+    }
+  ]
+}

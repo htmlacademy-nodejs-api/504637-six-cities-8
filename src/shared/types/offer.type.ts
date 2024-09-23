@@ -1,5 +1,6 @@
 
 export type TOfferType = 'apartment' | 'house' | 'room' | 'hotel';
+export type TOfferCoordinates = { latitude: number; longitude: number };
 
 export type TOffer = {
   name: string;
@@ -18,5 +19,5 @@ export type TOffer = {
   features: string[];
   user: string; // should be TUser
   comments: number;
-  coordinates: { latitude: number; longitude: number };
+  coordinates: TOfferCoordinates;
 };

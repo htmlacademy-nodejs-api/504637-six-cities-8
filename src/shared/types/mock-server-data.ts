@@ -1,10 +1,12 @@
 export type TMockServerData = {
-  categories: string[];
-  titles: string[];
-  descriptions: string[];
-  offerImages: string[];
-  categoryImages: string[];
-  users: string[];
-  emails: string[];
-  avatars: string[];
+  name: string[];
+  description: string[];
+  date: string[];
+  city: string[];
+  preview: string[];
+  images: string[][];
+  type: string[];
+  items: string[][];
+  author: string[];
+  coordinates: [number, number][];
 };

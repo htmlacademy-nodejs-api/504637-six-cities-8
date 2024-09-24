@@ -1,90 +1,94 @@
 {
   "api": {
-    "categories": [
-      "Books",
-      "Magazines",
-      "Kitchenware",
-      "Miscellaneous",
-      "Discs"
+    "name": [
+      "Sunny Apartment in Downtown",
+      "Cozy Family House",
+      "Luxury Penthouse Suite",
+      "Charming Cottage",
+      "Modern City Loft",
+      "Beachfront Villa",
+      "Mountain Retreat Cabin",
+      "Historic Townhouse",
+      "Eco-Friendly Treehouse",
+      "Stylish Studio Apartment"
     ],
-    "titles": [
-      "The Dark Tower",
-      "The Gunslinger",
-      "The Drawing of the Three",
-      "Cujo",
-      "The Eyes of the Dragon",
-      "The Green Mile",
-      "Christine",
-      "Salem's Lot",
-      "The Running Man",
-      "Lisey's Story",
-      "The Long Walk",
-      "The Institute",
-      "Thinner",
-      "Gwendy's Button Box",
-      "Cell",
-      "Draft",
-      "Night Watch",
-      "The Godfather",
-      "Atlas Shrugged"
+    "description": [
+      "Spacious and modern apartment located in the heart of the city.",
+      "Beautiful family home with a large backyard and all necessary amenities.",
+      "Elegant penthouse with panoramic views of the skyline.",
+      "Quaint cottage nestled in a picturesque countryside setting.",
+      "Sleek and stylish loft in a trendy urban neighborhood.",
+      "Luxurious villa with direct access to a pristine beach.",
+      "Cozy cabin surrounded by breathtaking mountain views.",
+      "Beautifully restored townhouse in a historic district.",
+      "Unique treehouse experience with sustainable features.",
+      "Compact and efficiently designed studio in a prime location."
     ],
-    "descriptions": [
-      "A frightening tale about a dragon. Sorcery, betrayal, and an extraordinary fantasy world.",
-      "A story about vampires from a small town. Treachery, an unconventional plot, and the extraordinary adventures of a priest.",
-      "To walk or to stop? A question without a right answer. A story about a long and deadly walk.",
-      "How to lose weight without going crazy? And how to gain it back? An unusual story of confrontation.",
-      "Answer the call and turn into a zombie. A story about zombification through communication devices.",
-      "Guilty or not? It doesn't matter. The outcome is the same. Superpowers won't help.",
-      "Even cars have souls. Is that a good thing? A mystical story about a car.",
-      "A crime saga from the inimitable Mario Puzo. Shootouts, chases, betrayal, and friendship.",
-      "The world is not only inhabited by humans. Others live among them and visually look no different. A story about magic and powerful beings. The struggle between the forces of Good and Evil."
+    "city": [
+      "Paris",
+      "Cologne",
+      "Brussels",
+      "Amsterdam",
+      "Hamburg",
+      "Dusseldorf"
     ],
-    "offerImages": [
-      "book.jpg",
-      "institute-book.jpg",
-      "dark-tower.jpg",
-      "shining.jpg",
-      "draft.jpg",
-      "magic.jpg"
+    "preview": [
+      "preview1.jpg",
+      "preview2.jpg",
+      "preview3.jpg",
+      "preview4.jpg",
+      "preview5.jpg",
+      "preview6.jpg",
+      "preview7.jpg",
+      "preview8.jpg",
+      "preview9.jpg",
+      "preview10.jpg"
     ],
-    "categoryImages": [
-      "category-book.jpg",
-      "category-disk.jpg",
-      "category-home.jpg",
-      "category-games.jpg",
-      "category-entertainment.jpg",
-      "category-films.jpg"
+    "images": [
+      ["image1.jpg", "image2.jpg"],
+      ["image3.jpg", "image4.jpg"],
+      ["image5.jpg", "image6.jpg"],
+      ["image7.jpg", "image8.jpg"],
+      ["image9.jpg", "image10.jpg"],
+      ["image11.jpg", "image12.jpg"],
+      ["image13.jpg", "image14.jpg"],
+      ["image15.jpg", "image16.jpg"],
+      ["image17.jpg", "image18.jpg"],
+      ["image19.jpg", "image20.jpg"]
     ],
-    "users": [
-      "Ivan Ivanov",
-      "Oleg Sidorov",
-      "Pierre Bezukhov",
-      "Roland Deschain",
-      "Holly Gibney",
-      "Jack Torrance",
-      "Anton Gorodetsky",
-      "Boris Gesar",
-      "Rocky Balboa",
-      "John Smith"
+    "type": ["apartment", "house", "penthouse", "cottage", "loft", "villa", "cabin", "townhouse", "treehouse", "studio"],
+    "items": [
+      ["Breakfast", "Air conditioning", "Fridge"],
+      ["Washer", "Towels", "Air conditioning"],
+      ["Gym", "Pool", "Sauna"],
+      ["Fireplace", "Garden", "BBQ"],
+      ["Smart TV", "Wi-Fi", "Work desk"],
+      ["Beach access", "Infinity pool", "Outdoor kitchen"],
+      ["Hiking trails", "Hot tub", "Fire pit"],
+      ["Antique furnishings", "Library", "Courtyard"],
+      ["Solar panels", "Composting toilet", "Rainwater harvesting"],
+      ["Kitchenette", "Fold-out bed", "Balcony"]
     ],
-    "emails": [
-      "snow@pisem.local",
-      "president@dka.local",
-      "fish@big.local",
-      "test@pisem.local",
-      "freedom@pisem.local",
-      "rolan@pochta.local",
-      "author@mir.local",
-      "test@lost.loca",
-      "kujo-fan@story.local"
+    "author": [
+      "John Doe",
+      "Jane Smith",
+      "Michael Johnson",
+      "Emily Brown",
+      "David Lee",
+      "Sarah Wilson",
+      "Robert Taylor",
+      "Lisa Anderson",
+      "Thomas Clark",
+      "Jennifer White"
     ],
-    "avatars": [
-      "user.jpg",
-      "photo.jpg",
-      "awesome-avatar.jpg",
-      "roland.jpg",
-      "smite.jpg",
-      "coffee.jpg"
+    "coordinates": [
+      [48.85661, 2.351499],
+      [48.85661, 2.351499],
+      [48.85661, 2.351499],
+      [48.85661, 2.351499],
+      [48.85661, 2.351499],
+      [48.85661, 2.351499]
     ]
   }
 }
+

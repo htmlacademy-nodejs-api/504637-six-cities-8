@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
-import { Price, WeekDays } from '../../constants/index.js';
 import { generateRandomValue, getRandomItem, getRandomItems } from '../../helpers/common.js';
+import { Price, WeekDays } from '../../types/index.js';
 import { TMockServerData } from '../../types/mock-server-data.js';
 import { IOfferGenerator } from './file-generator.interface.js';
 

@@ -1,8 +1,12 @@
 import { inject, injectable } from 'inversify';
 import { Mongoose } from 'mongoose';
+import { setTimeout } from 'node:timers/promises';
 import { Component } from '../../types/component.enum.js';
 import { ILogger } from '../logger/logger.interface.js';
 import { IDatabaseClient } from './database-client.interface.js';
+
+const RETRY_COUNT = 5;
+const RETRY_TIMEOUT = 1000;
 
 @injectable()
 export class MongoDatabaseClient implements IDatabaseClient {
@@ -24,11 +28,22 @@ export class MongoDatabaseClient implements IDatabaseClient {
 
     this.logger.info('Trying to connect to MongoDB...');
 
-    this.mongoose = new Mongoose();
-    await this.mongoose.connect(uri);
-    this.isConnected = true;
+    let attempt = 1;
+    while(RETRY_COUNT > attempt) {
+      try {
+        this.mongoose = new Mongoose();
+        await this.mongoose.connect(uri);
+        this.isConnected = true;
+        this.logger.info('Database connection established');
+        return;
+      } catch(error) {
+        console.log(`Failed connect to the database, attempt ${attempt}`);
+        attempt++;
+        await setTimeout(RETRY_TIMEOUT);
+      }
+    }
 
-    this.logger.info('Database connection established');
+    throw new Error(`Unable to establish database connection attempts ${RETRY_COUNT}`);
   }
 
   public async disconnect(): Promise<void> {

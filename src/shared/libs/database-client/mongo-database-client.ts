@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { Mongoose } from 'mongoose';
+import mongoose, { Mongoose } from 'mongoose';
 import { setTimeout } from 'node:timers/promises';
 import { Component } from '../../types/component.enum.js';
 import { ILogger } from '../logger/logger.interface.js';
@@ -31,8 +31,7 @@ export class MongoDatabaseClient implements IDatabaseClient {
     let attempt = 1;
     while(RETRY_COUNT > attempt) {
       try {
-        this.mongoose = new Mongoose();
-        await this.mongoose.connect(uri);
+        this.mongoose = await mongoose.connect(uri);
         this.isConnected = true;
         this.logger.info('Database connection established');
         return;

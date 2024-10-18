@@ -1,7 +1,7 @@
 import EventEmitter from 'node:events';
 import { createReadStream } from 'node:fs';
 import { TOffer } from '../../types/index.js';
-import { TOfferType } from '../../types/offer.type.js';
+import { OfferType } from '../../types/offer.type.js';
 import { IFileReader } from './file-reader.interface.js';
 
 export class TSVFileReader extends EventEmitter implements IFileReader {
@@ -77,7 +77,7 @@ export class TSVFileReader extends EventEmitter implements IFileReader {
       isPremium: this.converStringToBoolean(isPremium),
       isFeatured: this.converStringToBoolean(isFeatured),
       rating: parseFloat(rating),
-      type: type as TOfferType,
+      type: type as OfferType,
       rooms: parseInt(rooms, 10),
       guests: parseInt(guests, 10),
       features: this.parseCSVString(featuresStr),

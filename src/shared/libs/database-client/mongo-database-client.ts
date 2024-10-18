@@ -1,6 +1,7 @@
 import { inject, injectable } from 'inversify';
 import mongoose, { Mongoose } from 'mongoose';
 import { setTimeout } from 'node:timers/promises';
+import { getErrorMessage } from '../../helpers/common.js';
 import { Component } from '../../types/component.enum.js';
 import { ILogger } from '../logger/logger.interface.js';
 import { IDatabaseClient } from './database-client.interface.js';
@@ -26,7 +27,7 @@ export class MongoDatabaseClient implements IDatabaseClient {
       throw new Error('MongoDB already connected');
     }
 
-    this.logger.info('Trying to connect to MongoDB...');
+    this.logger.info('Trying to connect to database...');
 
     let attempt = 1;
     while(RETRY_COUNT > attempt) {
@@ -36,13 +37,16 @@ export class MongoDatabaseClient implements IDatabaseClient {
         this.logger.info('Database connection established');
         return;
       } catch(error) {
-        console.log(`Failed connect to the database, attempt ${attempt}`);
+        this.logger.error(`Failed connect to database, attempt ${attempt}`,new Error(`Filed to connect to database! ${getErrorMessage(error)}`));
+        this.logger.info('Trying to reconnect...');
         attempt++;
         await setTimeout(RETRY_TIMEOUT);
       }
     }
 
-    throw new Error(`Unable to establish database connection attempts ${RETRY_COUNT}`);
+    const errorMsg = `Unable to establish database connection, attempts ${RETRY_COUNT}`;
+    this.logger.error(errorMsg, new Error(errorMsg));
+    throw new Error(errorMsg);
   }
 
   public async disconnect(): Promise<void> {

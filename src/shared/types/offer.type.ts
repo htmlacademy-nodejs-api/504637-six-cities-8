@@ -1,10 +1,17 @@
 
-export type TOfferType = 'apartment' | 'house' | 'room' | 'hotel';
 export type TOfferCoordinates = { latitude: number; longitude: number };
+
+
+export enum OfferType {
+  APARTMENT = 'apartment',
+  HOUSE = 'house',
+  ROOM = 'room',
+  HOTEL = 'hotel'
+}
 
 export enum Price {
   MIN = 1000,
-   MAX = 10000
+  MAX = 10000
 }
 export enum WeekDays {
   FIRST = 1,
@@ -21,7 +28,7 @@ export type TOffer = {
   isPremium: boolean;
   isFeatured: boolean;
   rating: number;
-  type: TOfferType,
+  type: OfferType,
   rooms: number;
   guests: number;
   price: number;

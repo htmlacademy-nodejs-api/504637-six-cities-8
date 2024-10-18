@@ -1,43 +1,48 @@
 /* eslint-disable @typescript-eslint/no-unsafe-declaration-merging */
 import { defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose/typegoose';
 import { createSHA256 } from '../../helpers/hash.js';
-import { TUser, TUserType } from '../../types/index.js';
+import { emailValidator } from '../../helpers/validators.js';
+import { TUser, UserType } from '../../types/index.js';
 
 export interface UserEntity extends defaultClasses.Base {}
 
-@modelOptions({schemaOptions: { collection: 'users', timestamps: true }})
+@modelOptions({ schemaOptions: { collection: 'users', timestamps: true }})
 export class UserEntity extends defaultClasses.TimeStamps implements TUser {
-  @prop({ required: true, unique: true })
-  public email: string;
-
-  @prop({ required: true, })
+  @prop({ required: true, minlength: 1, maxlength: 15 })
   public name: string;
 
-  @prop({ required: true, default: 'basic' })
-  public userType: TUserType;
+  @prop({
+    required: true,
+    unique: true,
+    validate: { validator: emailValidator, message: 'Invalid email format' }
+  })
+  public email: string;
+
+  @prop({ required: true, default: UserType.BASIC })
+  public type: UserType;
+
+  @prop({ required: true, minlength: 6, maxlength: 12 })
+  public password: string;
 
   @prop({ required: false, default: '' })
-  public avatarPath?: string | undefined;
-
-  @prop({ required: false})
-  public passwordHash?: string | undefined;
+  public avatar?: string | undefined;
 
   constructor(userData: TUser) {
     super();
 
     this.email = userData.email;
     this.name = userData.name;
-    this.userType = userData.userType || 'basic';
-    this.avatarPath = userData.avatarPath || '';
-    this.passwordHash = userData.passwordHash;
+    this.type = userData.type || UserType.BASIC;
+    this.avatar = userData.avatar || '';
+    this.password = userData.password;
   }
 
   public setPassword(password: string, salt: string) {
-    this.passwordHash = createSHA256(password, salt);
+    this.password = createSHA256(password, salt);
   }
 
   public getPassword() {
-    return this.passwordHash;
+    return this.password;
   }
 
 }

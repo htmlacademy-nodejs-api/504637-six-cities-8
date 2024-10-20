@@ -1,4 +1,5 @@
 #!/opt/homebrew/opt/nvm/versions/node/v18.20.1/bin/node
+import 'reflect-metadata';
 import { GenerateCommand } from './cli/commands/generate.command.js';
 import { CliApplication, HelpCommand, ImportCommand, VersionCommand } from './cli/index.js';
 

@@ -7,7 +7,7 @@ import { UserEntity } from './user.entity.js';
 import { IUserService } from './user.service.interface.js';
 
 @injectable()
-export class DefaultUserService implements IUserService {
+export class UserService implements IUserService {
   constructor(
     @inject(Component.Logger) private readonly logger: ILogger,
     @inject(Component.UserModel) private readonly userModel: types.ModelType<UserEntity>
@@ -18,7 +18,7 @@ export class DefaultUserService implements IUserService {
     user.setPassword(createUserDto.password, salt);
 
     const newUser = await this.userModel.create(user);
-    this.logger.info('New user created');
+    this.logger.info(`New user created ${newUser.email}}`);
     return newUser;
   }
 

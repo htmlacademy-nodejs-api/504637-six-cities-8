@@ -4,6 +4,6 @@ export {
   getRandomItems
 } from './common.js';
 
-export { getDatabaseUrl } from './database.js';
+export { getDatabaseUri as getDatabaseUrl } from './database.js';
 export { getCurrentModuleDirectoryPath } from './file-system.js';
 

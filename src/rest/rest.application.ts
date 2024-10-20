@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { getDatabaseUrl } from '../shared/helpers/database.js';
+import { getDatabaseUri } from '../shared/helpers/database.js';
 import { IConfig } from '../shared/libs/config/config.interface.js';
 import { TRestSchema } from '../shared/libs/config/rest.schema.js';
 import { IDatabaseClient } from '../shared/libs/database-client/database-client.interface.js';
@@ -15,7 +15,7 @@ export class RestApplication {
   ) {}
 
   private async initDB() {
-    const mongoUri = getDatabaseUrl(
+    const mongoUri = getDatabaseUri(
       this.config.get('DB_USER'),
       this.config.get('DB_PASSWORD'),
       this.config.get('DB_HOST'),

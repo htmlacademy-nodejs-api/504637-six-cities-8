@@ -18,7 +18,7 @@ export class TSVOfferGenerator implements IOfferGenerator {
     const isFeatured = getRandomItem<boolean>([true, false]);
     const rating = generateRandomValue(1, 5, 1);
     const type = getRandomItem<string>(this.mockData.type);
-    const room = getRandomItem<number>([1, 2, 3,4 , 5, 6, 7, 8, 9, 10]);
+    const room = getRandomItem<number>([1, 2, 3,4 , 5, 6, 7, 8]);
     const guests = getRandomItem<number>([1, 2, 3,4 , 5, 6, 7, 8, 9, 10]);
     const price = generateRandomValue(Price.MIN, Price.MAX);
     const items = getRandomItems<string[]>(this.mockData.items).join(';');

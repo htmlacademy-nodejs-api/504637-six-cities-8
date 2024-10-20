@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 
 export function createSHA256(line: string, salt: string): string {
-  const shaHasher = crypto.createHmac('sha256', salt);
-  return shaHasher.update(line).digest('hex');
+  const hash = crypto.createHmac('sha256', salt).update(line).digest('hex');
+  return hash.slice(0, 12);
 }

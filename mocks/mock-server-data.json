@@ -56,7 +56,7 @@
       ["image17.jpg", "image18.jpg"],
       ["image19.jpg", "image20.jpg"]
     ],
-    "type": ["apartment", "house", "penthouse", "cottage", "loft", "villa", "cabin", "townhouse", "treehouse", "studio"],
+    "type": ["apartment", "house", "room", "hotel"],
     "items": [
       ["Breakfast", "Air conditioning", "Fridge"],
       ["Washer", "Towels", "Air conditioning"],

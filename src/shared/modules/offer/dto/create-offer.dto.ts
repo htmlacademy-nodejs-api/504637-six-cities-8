@@ -1,22 +1,6 @@
-export type TOfferCoordinates = { latitude: number; longitude: number };
+import { OfferType, TOfferCoordinates } from '../../../types/index.js';
 
-export enum OfferType {
-  APARTMENT = 'apartment',
-  HOUSE = 'house',
-  ROOM = 'room',
-  HOTEL = 'hotel'
-}
-
-export enum Price {
-  MIN = 100,
-  MAX = 100_000
-}
-export enum WeekDays {
-  FIRST = 1,
-  LAST =7
-}
-
-export type TOffer = {
+export class CreateOfferDto {
   title: string;
   description: string;
   publishedAt: Date;
@@ -34,4 +18,4 @@ export type TOffer = {
   user: string;
   comments: number;
   coordinates: TOfferCoordinates;
-};
+}

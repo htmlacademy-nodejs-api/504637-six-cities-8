@@ -1,9 +1,12 @@
-export type TUserType = 'basic' | 'pro';
+export enum UserType {
+  BASIC = 'basic',
+  PRO = 'pro'
+}
 
 export type TUser = {
   name: string;
   email: string;
   password: string;
   avatar?: string;
-  userType: TUserType;
+  type: UserType;
 };

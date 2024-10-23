@@ -6,8 +6,11 @@ import { Component } from '../../types/component.enum.js';
 import { ILogger } from '../logger/logger.interface.js';
 import { IDatabaseClient } from './database-client.interface.js';
 
-const RETRY_COUNT = 5;
-const RETRY_TIMEOUT = 1000;
+enum DatabaseConnection {
+  RETRY_COUNT = 5,
+  RETRY_TIMEOUT = 1000,
+}
+
 
 @injectable()
 export class MongoDatabaseClient implements IDatabaseClient {
@@ -30,7 +33,7 @@ export class MongoDatabaseClient implements IDatabaseClient {
     this.logger.info('Trying to connect to database...');
 
     let attempt = 1;
-    while(RETRY_COUNT > attempt) {
+    while(DatabaseConnection.RETRY_COUNT > attempt) {
       try {
         this.mongoose = await mongoose.connect(uri);
         this.isConnected = true;
@@ -40,11 +43,11 @@ export class MongoDatabaseClient implements IDatabaseClient {
         this.logger.error(`Failed connect to database, attempt ${attempt}`,new Error(`Filed to connect to database! ${getErrorMessage(error)}`));
         this.logger.info('Trying to reconnect...');
         attempt++;
-        await setTimeout(RETRY_TIMEOUT);
+        await setTimeout(DatabaseConnection.RETRY_TIMEOUT);
       }
     }
 
-    const errorMsg = `Unable to establish database connection, attempts ${RETRY_COUNT}`;
+    const errorMsg = `Unable to establish database connection, attempts ${DatabaseConnection.RETRY_COUNT}`;
     this.logger.error(errorMsg, new Error(errorMsg));
     throw new Error(errorMsg);
   }

@@ -1,0 +1,497 @@
+openapi: 3.1.0
+info:
+  title: API Title
+  description: API documentation for six-cities app
+  version: 2.0.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://localhost:3000/v1
+  
+paths:
+
+
+# 2.1. Создание нового предложения.
+  /offers:
+    post:
+      summary: Create a new offer
+      description: Create a new rental offer by providing the necessary data
+      tags:
+        - offers
+      responses:
+        '201':
+          description: Offer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offer'
+        '400':
+          description: Bad request
+
+    get:
+      summary: Get list of offers
+      description: Retrieve a list of available rental offers
+      tags:
+        - offers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Offer'
+
+# 2.2. Редактирование предложения.
+# 2.3. Удаление предложения.
+# 2.4. Получение списка предложений по аренде.
+# 2.5. Получение детальной информации о предложении.
+# 2.6. Получение списка комментариев для предложения.
+  /offers/{offerId}:
+    put:
+      summary: Edit an offer
+      description: Edit an existing rental offer
+      tags:
+        - offers
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Offer updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offer'
+        '404':
+          description: Offer not found
+
+    delete:
+      summary: Delete an offer
+      description: Delete an existing rental offer
+      tags:
+        - offers
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Offer deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offer'
+        '404':
+          description: Offer not found
+
+    get:
+      summary: Get offer details
+      description: Retrieve detailed information about a specific offer
+      tags:
+        - offers
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offer'
+        '404':
+          description: Offer not found
+
+# 2.6. Получение списка комментариев для предложения.
+  /offers/{offerId}/comments:
+    get:
+      summary: Get comments for an offer
+      description: Retrieve a list of comments for a specific offer
+      tags:
+        - comments
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Comments retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+        '404':
+          description: Offer not found
+
+# 2.7. Добавление комментария для предложения.
+    post:
+      summary: Add a comment to an offer
+      description: Add a new comment to a specific offer
+      tags:
+        - comments
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommentInput'
+      responses:
+        '201':
+          description: Comment added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+        '404':
+          description: Offer not found
+
+# 2.8. Создание нового пользователя.
+  /users:
+    post:
+      summary: Create a new user
+      description: Register a new user in the system
+      tags:
+        - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInput'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid input
+
+# 2.9. Вход в закрытую часть приложения.
+  /login:
+    post:
+      summary: User login
+      description: Authenticate user and get access token
+      tags:
+        - auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginInput'
+      responses:
+        '200':
+          description: Successful login
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid credentials
+
+# 2.10. Выход из закрытой части приложения.
+  /logout:
+    post:
+      summary: User logout
+      description: Invalidate user's access token
+      tags:
+        - auth
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Successful logout
+        '401':
+          description: Unauthorized
+
+# 2.11. Проверка состояния пользователя.
+  /users/me:
+    get:
+      summary: Get current user info
+      description: Retrieve information about the currently authenticated user
+      tags:
+        - users
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+
+# 2.12. Получение списка премиальных предложений для города.
+  /offers/premium:
+    get:
+      summary: Get premium offers for a city
+      description: Retrieve a list of premium offers for a specific city
+      tags:
+        - offers
+      parameters:
+        - name: city
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Offer'
+
+# 2.13. Получения списка предложений, добавленных в избранное.
+  /favorites:
+    get:
+      summary: Get favorite offers
+      description: Retrieve a list of offers added to favorites by the authenticated user
+      tags:
+        - favorites
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Offer'
+        '401':
+          description: Unauthorized
+
+# 2.14. Добавление/удаление предложения в/из избранное.
+  /favorites/{offerId}:
+    post:
+      summary: Add offer to favorites
+      description: Add an offer to the authenticated user's favorites
+      tags:
+        - favorites
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Offer added to favorites successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offer'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Offer not found
+    delete:
+      summary: Remove offer from favorites
+      description: Remove an offer from the authenticated user's favorites
+      tags:
+        - favorites
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: offerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Offer removed from favorites successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Offer not found
+
+components:
+  schemas:
+    Offer:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+          minLength: 10
+          maxLength: 100
+        description:
+          type: string
+          minLength: 20
+          maxLength: 1024
+        publishedAt:
+          type: string
+          format: date-time
+        city:
+          type: string
+        preview:
+          type: string
+          format: url
+        images:
+          type: array
+          items:
+            type: string
+            format: url
+        isPremium:
+          type: boolean
+        isFeatured:
+          type: boolean
+        rating:
+          type: number
+          minimum: 1
+          maximum: 5
+        type:
+          type: string
+          enum:
+            - apartment
+            - house
+            - room
+            - hotel
+        rooms:
+          type: integer
+          minimum: 1
+          maximum: 8
+        guests:
+          type: integer
+          minimum: 1
+          maximum: 10
+        price:
+          type: number
+          minimum: 100
+          maximum: 100000
+        features:
+          type: array
+          items:
+            type: string
+            enum:
+              - Breakfast
+              - Air conditioning
+              - Laptop friendly workspace
+              - Baby seat
+              - Washer
+              - Towels
+              - Fridge
+        user:
+          $ref: '#/components/schemas/User'
+        comments:
+          type: integer
+        coordinates:
+          $ref: '#/components/schemas/Coordinates'
+
+    Coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+        longitude:
+          type: number
+
+    User:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 15
+        email:
+          type: string
+          format: email
+        avatar:
+          type: string
+          format: url 
+        password:
+          type: string
+          minLength: 6
+          maxLength: 12
+
+    UserInput:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 6
+          maxLength: 12
+
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+        text:
+          type: string
+          minLength: 5
+          maxLength: 1024
+        createdAt:
+          type: string
+          format: date-time
+        user:
+          $ref: '#/components/schemas/User'
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+
+    CommentInput:
+      type: object
+      properties:
+        text:
+          type: string
+    
+    LoginInput:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+
+    LoginResponse:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        accessToken:
+          type: string

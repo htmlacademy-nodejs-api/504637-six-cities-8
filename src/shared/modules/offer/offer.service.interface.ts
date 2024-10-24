@@ -1,6 +1,6 @@
 import { DocumentType } from '@typegoose/typegoose';
-import { OfferEntity } from './offer.entity.js';
 import { CreateOfferDto } from './dto/create-offer.dto.js';
+import { OfferEntity } from './offer.entity.js';
 
 export interface IOfferService {
   create(createOfferDto: CreateOfferDto): Promise<DocumentType<OfferEntity>>;
@@ -12,4 +12,5 @@ export interface IOfferService {
   findAllFeatured(): Promise<DocumentType<OfferEntity>[]>;
   addToFeatured(id: string): Promise<DocumentType<OfferEntity> | null>;
   deleteFromFeatured(id: string): Promise<DocumentType<OfferEntity> | null>;
+  incCommentCount(id: string): Promise<DocumentType<OfferEntity> | null>;
 }

@@ -1,8 +1,7 @@
-import { TUser } from './user.type.js';
 
 export type TComment = {
   text: string;
-  publishedAt: string;
+  publishedAt: Date;
   rating: number;
-  user: TUser;
+  user: string;
 };

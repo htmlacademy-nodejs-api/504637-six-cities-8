@@ -1,14 +1,15 @@
 import { DocumentType } from '@typegoose/typegoose';
 import { ModelType } from '@typegoose/typegoose/lib/types.js';
-import { inject } from 'inversify';
+import { inject, injectable } from 'inversify';
 import { ILogger } from '../../libs/logger/logger.interface.js';
 import { Component } from '../../types/component.enum.js';
 import { IOfferService } from '../offer/offer.service.interface.js';
 import { CommentEntity } from './comment.entity.js';
-import { CommentServiceInterface } from './comment.service.interface.js';
+import { ICommentService } from './comment.service.interface.js';
 import { CreateCommentDto } from './dto/create-comment.dto.js';
 
-export class CommentService implements CommentServiceInterface {
+@injectable()
+export class CommentService implements ICommentService {
   constructor(
     @inject(Component.Logger) private readonly logger: ILogger,
     @inject(Component.CommentModel) private readonly commentModel: ModelType<CommentEntity>,

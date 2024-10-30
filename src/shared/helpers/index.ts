@@ -1,5 +1,8 @@
 export {
+  createErrorObject,
+  fillDTO,
   generateRandomValue,
+  getErrorMessage,
   getRandomItem,
   getRandomItems
 } from './common.js';

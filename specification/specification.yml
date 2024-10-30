@@ -353,9 +353,6 @@ components:
           type: string
           minLength: 20
           maxLength: 1024
-        publishedAt:
-          type: string
-          format: date-time
         city:
           type: string
         preview:

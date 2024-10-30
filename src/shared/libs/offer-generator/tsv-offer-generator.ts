@@ -1,6 +1,5 @@
-import dayjs from 'dayjs';
 import { generateRandomValue, getRandomItem, getRandomItems } from '../../helpers/common.js';
-import { Price, WeekDays } from '../../types/index.js';
+import { Price } from '../../types/index.js';
 import { TMockServerData } from '../../types/mock-server-data.js';
 import { IOfferGenerator } from './file-generator.interface.js';
 
@@ -26,10 +25,6 @@ export class TSVOfferGenerator implements IOfferGenerator {
     const comments = getRandomItem<number>([1, 2, 3,4 , 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
     const coordinates = getRandomItem<number[]>(this.mockData.coordinates);
 
-    const publishedAt = dayjs()
-      .subtract(generateRandomValue(WeekDays.FIRST, WeekDays.LAST), 'day')
-      .toISOString();
-
-    return [name, description, publishedAt, city, preview, images, isPremium, isFeatured, rating, type, room, guests, price, items, author, comments, coordinates].join('\t');
+    return [name, description, city, preview, images, isPremium, isFeatured, rating, type, room, guests, price, items, author, comments, coordinates].join('\t');
   }
 }

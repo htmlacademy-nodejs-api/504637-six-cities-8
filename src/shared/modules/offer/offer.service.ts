@@ -72,4 +72,9 @@ export class OfferService implements IOfferService {
     this.logger.info(`Offer ${id} comment count incremented`);
     return offer;
   }
+
+  public async findByTitle(title: string): Promise<DocumentType<OfferEntity> | null> {
+    const offer = await this.offerModel.findOne({ title }).exec();
+    return offer;
+  }
 }

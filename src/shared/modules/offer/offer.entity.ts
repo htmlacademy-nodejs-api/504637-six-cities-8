@@ -14,9 +14,6 @@ export class OfferEntity extends defaultClasses.TimeStamps implements TOffer {
   public description: string;
 
   @prop({ required: true })
-  public publishedAt: Date;
-
-  @prop({ required: true })
   public city: string;
 
   @prop({ required: true })

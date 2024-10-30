@@ -19,7 +19,6 @@ export enum WeekDays {
 export type TOffer = {
   title: string;
   description: string;
-  publishedAt: Date;
   city: string;
   preview: string;
   images: string[];

@@ -4,7 +4,7 @@ import { OfferEntity } from './offer.entity.js';
 
 export interface IOfferService {
   create(createOfferDto: CreateOfferDto): Promise<DocumentType<OfferEntity>>;
-  update(id: string, updateOfferDto: Partial<CreateOfferDto>): Promise<DocumentType<OfferEntity> | null>;
+  update(id: string, updateOfferDto: Partial<DocumentType<OfferEntity>>): Promise<DocumentType<OfferEntity> | null>;
   delete(id: string): Promise<DocumentType<OfferEntity> | null>;
   findAll(): Promise<DocumentType<OfferEntity>[]>;
   findById(id: string): Promise<DocumentType<OfferEntity> | null>;
@@ -13,4 +13,5 @@ export interface IOfferService {
   addToFeatured(id: string): Promise<DocumentType<OfferEntity> | null>;
   deleteFromFeatured(id: string): Promise<DocumentType<OfferEntity> | null>;
   incCommentCount(id: string): Promise<DocumentType<OfferEntity> | null>;
+  findByTitle(title: string): Promise<DocumentType<OfferEntity> | null>;
 }

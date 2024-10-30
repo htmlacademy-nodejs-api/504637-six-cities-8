@@ -10,9 +10,6 @@ export class CommentEntity extends defaultClasses.TimeStamps implements TComment
   @prop({ required: true, minlength: 5, maxlength: 1024 })
   public text: string;
 
-  @prop({ required: true, type: Date })
-  public publishedAt: Date;
-
   @prop({ required: true, min: 1, max: 5 })
   public rating: number;
 

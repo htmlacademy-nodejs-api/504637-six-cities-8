@@ -52,7 +52,6 @@ export class TSVFileReader extends EventEmitter implements IFileReader {
     const [
       name,
       description,
-      publishedAt,
       city,
       preview,
       imagesStr,
@@ -74,7 +73,6 @@ export class TSVFileReader extends EventEmitter implements IFileReader {
     return {
       title: name,
       description,
-      publishedAt: new Date(publishedAt),
       city,preview,
       images: this.parseCSVString(imagesStr),
       isPremium: this.converStringToBoolean(isPremium),

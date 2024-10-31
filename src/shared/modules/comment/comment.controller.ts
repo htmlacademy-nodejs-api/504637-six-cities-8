@@ -2,10 +2,13 @@ import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import { fillDTO } from '../../helpers/common.js';
 import { ILogger } from '../../libs/logger/logger.interface.js';
-import { BaseController } from '../../libs/rest/controller/base-controller.abstract.js';
+import { BaseController } from '../../libs/rest/controller/index.js';
 import { HttpMethod } from '../../libs/rest/index.js';
+import { ValidateDtoMiddleware } from '../../libs/rest/middleware/validate-dto.middleware.js';
+import { ValidateObjectIdMiddleware } from '../../libs/rest/middleware/validate-objectid.middleware.js';
 import { Component } from '../../types/component.enum.js';
 import { ICommentService } from './comment.service.interface.js';
+import { CreateCommentDto } from './dto/create-comment.dto.js';
 import { CommentRdo } from './rdo/comment.rdo.js';
 
 @injectable()
@@ -16,8 +19,13 @@ export class CommentController extends BaseController {
   ) {
     super(logger);
 
-    this.addRoute({ path: '/:offerId', method: HttpMethod.GET, handler: this.findAll });
-    this.addRoute({ path: '/:offerId', method: HttpMethod.POST, handler: this.create });
+    this.addRoute({ path: '/:offerId', method: HttpMethod.GET, handler: this.findAll, middlewares: [new ValidateObjectIdMiddleware('offerId')] });
+    this.addRoute({
+      path: '/:offerId',
+      method: HttpMethod.POST,
+      handler: this.create,
+      middlewares: [new ValidateObjectIdMiddleware('offerId'), new ValidateDtoMiddleware(CreateCommentDto)]
+    });
   }
 
   public async findAll(req: Request, res: Response): Promise<void> {

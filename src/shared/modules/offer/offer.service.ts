@@ -39,7 +39,7 @@ export class OfferService implements IOfferService {
   }
 
   public async findById(id: string): Promise<DocumentType<OfferEntity> | null> {
-    const offer = await this.offerModel.findById({ id }).populate(['user']).exec();
+    const offer = await this.offerModel.findById(id).populate(['user']).exec();
     return offer;
   }
 

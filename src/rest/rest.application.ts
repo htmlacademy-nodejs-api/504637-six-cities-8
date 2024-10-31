@@ -5,7 +5,7 @@ import { IConfig } from '../shared/libs/config/config.interface.js';
 import { TRestSchema } from '../shared/libs/config/rest.schema.js';
 import { IDatabaseClient } from '../shared/libs/database-client/database-client.interface.js';
 import { ILogger } from '../shared/libs/logger/logger.interface.js';
-import { IController } from '../shared/libs/rest/controller/controller.interface.js';
+import { IController } from '../shared/libs/rest/controller/index.js';
 import { IExceptionFilter } from '../shared/libs/rest/exception-filter/index.js';
 import { Component } from '../shared/types/component.enum.js';
 

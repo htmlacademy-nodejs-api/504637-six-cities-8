@@ -39,5 +39,4 @@ export class CommentService implements ICommentService {
     const rating = comments.reduce((acc, comment) => acc + comment.rating, 0) / comments.length;
     await this.offerService.update(offerId, { rating });
   }
-
 }

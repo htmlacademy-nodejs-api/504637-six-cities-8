@@ -46,8 +46,7 @@ export class OfferController extends BaseController {
       throw new HttpError(StatusCodes.CONFLICT, 'Offer already exists', 'OfferController');
     }
 
-    const { title, description, price, type, city, images, guests, rooms, features, coordinates, user, isPremium, isFeatured, preview } = req.body;
-    const offer = await this.offerService.create({ title, description, price, type, city, images, guests, rooms, features, coordinates, user, isPremium, isFeatured, preview, comments: 0, rating: 1 });
+    const offer = await this.offerService.create({...req.body, comments: 0, rating: 1 });
     this.created(res, fillDTO(OfferRdo, offer));
   }
 

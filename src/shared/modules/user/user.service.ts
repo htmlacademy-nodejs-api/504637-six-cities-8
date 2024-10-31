@@ -22,11 +22,19 @@ export class UserService implements IUserService {
     return newUser;
   }
 
-  findByEmail(email: string): Promise<DocumentType<UserEntity> | null> {
+  public async login(email: string, password: string): Promise<DocumentType<UserEntity> | null> {
+    return this.userModel.findOne({ email, password });
+  }
+
+  public async logout(email: string): Promise<DocumentType<UserEntity> | null> {
+    return this.userModel.findOneAndUpdate({ email }, { $set: { token: null } });
+  }
+
+  public async findByEmail(email: string): Promise<DocumentType<UserEntity> | null> {
     return this.userModel.findOne({ email });
   }
 
-  async findOrCreate(createUserDto: CreateUserDto, salt: string): Promise<DocumentType<UserEntity>> {
+  public async findOrCreate(createUserDto: CreateUserDto, salt: string): Promise<DocumentType<UserEntity>> {
     const existedUser = await this.findByEmail(createUserDto.email);
 
     if (existedUser) {

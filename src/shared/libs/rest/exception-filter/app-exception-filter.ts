@@ -4,7 +4,7 @@ import { inject, injectable } from 'inversify';
 import { createErrorObject } from '../../../helpers/common.js';
 import { Component } from '../../../types/component.enum.js';
 import { ILogger } from '../../logger/logger.interface.js';
-import { HttpError } from '../errors/http-error.js';
+import { HttpError } from '../errors/index.js';
 import { IExceptionFilter } from './exception-filter.interface.js';
 
 @injectable()

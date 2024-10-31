@@ -20,8 +20,11 @@ export abstract class BaseController implements IController {
   }
 
   public addRoute(route: IRoute): void {
+    const middlewareHandlers = route.middlewares?.map((middleware) => middleware.execute.bind(middleware));
     const wrapperAsyncHandler = expressAsyncHandler(route.handler.bind(this));
-    this._router[route.method](route.path, wrapperAsyncHandler);
+    const allHandlers = middlewareHandlers ? [...middlewareHandlers, wrapperAsyncHandler] : wrapperAsyncHandler;
+
+    this._router[route.method](route.path, allHandlers);
     this.logger.info(`Route registered: ${route.method.toUpperCase()} ${route.path}`);
   }
 
@@ -41,6 +44,5 @@ export abstract class BaseController implements IController {
   public noContent<T>(res: Response, data: T): void {
     this.send(res, StatusCodes.NO_CONTENT, data);
   }
-
 }
 

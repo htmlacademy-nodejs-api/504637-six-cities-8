@@ -3,10 +3,13 @@ import { StatusCodes } from 'http-status-codes';
 import { inject, injectable } from 'inversify';
 import { fillDTO } from '../../helpers/index.js';
 import { ILogger } from '../../libs/logger/logger.interface.js';
-import { BaseController } from '../../libs/rest/controller/base-controller.abstract.js';
-import { HttpError } from '../../libs/rest/errors/http-error.js';
+import { BaseController } from '../../libs/rest/controller/index.js';
+import { HttpError } from '../../libs/rest/errors/index.js';
+import { ValidateDtoMiddleware } from '../../libs/rest/middleware/validate-dto.middleware.js';
+import { ValidateObjectIdMiddleware } from '../../libs/rest/middleware/validate-objectid.middleware.js';
 import { HttpMethod } from '../../libs/rest/types/http-methods.enum.js';
 import { Component } from '../../types/component.enum.js';
+import { CreateOfferDto } from './dto/create-offer.dto.js';
 import { IOfferService } from './offer.service.interface.js';
 import { OfferRdo } from './rdo/offer.rdo.js';
 
@@ -21,13 +24,13 @@ export class OfferController extends BaseController {
     this.logger.info('Register routes for OfferController');
 
     this.addRoute({ path: '/', method: HttpMethod.GET, handler: this.findAll });
-    this.addRoute({ path: '/', method: HttpMethod.POST, handler: this.create });
-    this.addRoute({ path: '/:offerId', method: HttpMethod.DELETE, handler: this.delete });
-    this.addRoute({ path: '/:offerId', method: HttpMethod.GET, handler: this.findById });
-    this.addRoute({ path: '/:offerId', method: HttpMethod.PATCH, handler: this.update });
+    this.addRoute({ path: '/', method: HttpMethod.POST, handler: this.create, middlewares: [new ValidateDtoMiddleware(CreateOfferDto)] });
+    this.addRoute({ path: '/:offerId', method: HttpMethod.GET, handler: this.findById, middlewares: [new ValidateObjectIdMiddleware('offerId')] });
+    this.addRoute({ path: '/:offerId', method: HttpMethod.PATCH, handler: this.update, middlewares: [new ValidateObjectIdMiddleware('offerId')] });
+    this.addRoute({ path: '/:offerId', method: HttpMethod.DELETE, handler: this.delete, middlewares: [new ValidateObjectIdMiddleware('offerId')] });
     this.addRoute({ path: '/premium', method: HttpMethod.GET, handler: this.findAllPremium });
     this.addRoute({ path: '/featured', method: HttpMethod.GET, handler: this.findAllFeatured });
-    this.addRoute({ path: '/:offerId/featured', method: HttpMethod.PATCH, handler: this.addToFeatured });
+    this.addRoute({ path: '/:offerId/featured', method: HttpMethod.PATCH, handler: this.addToFeatured, middlewares: [new ValidateObjectIdMiddleware('offerId')] });
   }
 
   public async findAll(_req: Request, res: Response): Promise<void> {

@@ -8,6 +8,7 @@ export type TRestSchema = {
   DB_PASSWORD: string;
   DB_PORT: number;
   DB_NAME: string;
+  UPLOAD_DIRECTORY: string;
 }
 
 export const configRestSchema = convict<TRestSchema>({
@@ -52,5 +53,11 @@ export const configRestSchema = convict<TRestSchema>({
     format: String,
     env: 'DB_NAME',
     default: 'mongo',
+  },
+  UPLOAD_DIRECTORY: {
+    doc: 'Directory for upload files',
+    format: String,
+    env: 'UPLOAD_DIRECTORY',
+    default: '/upload',
   },
 });

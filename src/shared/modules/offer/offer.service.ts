@@ -77,4 +77,8 @@ export class OfferService implements IOfferService {
     const offer = await this.offerModel.findOne({ title }).exec();
     return offer;
   }
+
+  public async exists(documentId: string): Promise<boolean> {
+    return (await this.offerModel.exists({ _id: documentId })) !== null;
+  }
 }

@@ -5,6 +5,7 @@ import { ILogger } from '../../libs/logger/logger.interface.js';
 import { BaseController } from '../../libs/rest/controller/index.js';
 import { HttpMethod } from '../../libs/rest/index.js';
 import { DocumentExistsMiddleware } from '../../libs/rest/middleware/document-exists.middleware.js';
+import { PrivateRouteMiddleware } from '../../libs/rest/middleware/private-route.middleware.js';
 import { ValidateDtoMiddleware } from '../../libs/rest/middleware/validate-dto.middleware.js';
 import { ValidateObjectIdMiddleware } from '../../libs/rest/middleware/validate-objectid.middleware.js';
 import { Component } from '../../types/component.enum.js';
@@ -36,6 +37,7 @@ export class CommentController extends BaseController {
       method: HttpMethod.POST,
       handler: this.create,
       middlewares: [
+        new PrivateRouteMiddleware(),
         new ValidateObjectIdMiddleware('offerId'),
         new ValidateDtoMiddleware(CreateCommentDto),
         new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
@@ -50,7 +52,7 @@ export class CommentController extends BaseController {
   }
 
   public async create(req: Request, res: Response): Promise<void> {
-    const comment = await this.commentService.create(req.params.offerId, req.body);
+    const comment = await this.commentService.create(req.params.offerId, req.body, req.tokenPayload.id);
     this.created(res, fillDTO(CommentRdo, comment));
   }
 }

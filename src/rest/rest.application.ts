@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express, { Express } from 'express';
 import { inject, injectable } from 'inversify';
 import { getDatabaseUri } from '../shared/helpers/database.js';
@@ -8,7 +9,6 @@ import { ILogger } from '../shared/libs/logger/logger.interface.js';
 import { IController } from '../shared/libs/rest/controller/index.js';
 import { IExceptionFilter } from '../shared/libs/rest/exception-filter/index.js';
 import { Component } from '../shared/types/component.enum.js';
-
 @injectable()
 export class RestApplication {
   server: Express;
@@ -56,6 +56,7 @@ export class RestApplication {
   private async initMiddleware() {
     this.server.use(express.json());
     this.server.use('/upload', express.static(this.config.get('UPLOAD_DIRECTORY')));
+    this.server.use(cors());
   }
 
   private async initExceptionFilters() {

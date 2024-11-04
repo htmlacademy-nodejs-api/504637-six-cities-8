@@ -8,6 +8,7 @@ import { IDatabaseClient } from '../shared/libs/database-client/database-client.
 import { ILogger } from '../shared/libs/logger/logger.interface.js';
 import { IController } from '../shared/libs/rest/controller/index.js';
 import { IExceptionFilter } from '../shared/libs/rest/exception-filter/index.js';
+import { ParseTokenMiddleware } from '../shared/libs/rest/middleware/parse-token.middleware.js';
 import { Component } from '../shared/types/component.enum.js';
 @injectable()
 export class RestApplication {
@@ -16,16 +17,12 @@ export class RestApplication {
   constructor(
     @inject(Component.Logger) private readonly logger: ILogger,
     @inject(Component.Config) private readonly config: IConfig<TRestSchema>,
-    @inject(Component.DatabaseClient)
-    private readonly databaseClient: IDatabaseClient,
-    @inject(Component.OfferController)
-    private readonly offerController: IController,
-    @inject(Component.CommentController)
-    private readonly commentController: IController,
-    @inject(Component.UserController)
-    private readonly userController: IController,
-    @inject(Component.ExceptionFilter)
-    private readonly appExceptionFilter: IExceptionFilter
+    @inject(Component.DatabaseClient) private readonly databaseClient: IDatabaseClient,
+    @inject(Component.OfferController) private readonly offerController: IController,
+    @inject(Component.CommentController) private readonly commentController: IController,
+    @inject(Component.UserController) private readonly userController: IController,
+    @inject(Component.ExceptionFilter) private readonly appExceptionFilter: IExceptionFilter,
+    @inject(Component.AuthExceptionFilter) private readonly authExceptionFilter: IExceptionFilter
   ) {
     this.server = express();
   }
@@ -54,12 +51,16 @@ export class RestApplication {
   }
 
   private async initMiddleware() {
+    const parseTokenMiddleware = new ParseTokenMiddleware(this.config.get('JWT_SECRET'));
+
     this.server.use(express.json());
     this.server.use('/upload', express.static(this.config.get('UPLOAD_DIRECTORY')));
     this.server.use(cors());
+    this.server.use(parseTokenMiddleware.execute.bind(parseTokenMiddleware));
   }
 
   private async initExceptionFilters() {
+    this.server.use(this.authExceptionFilter.catch.bind(this.authExceptionFilter));
     this.server.use(this.appExceptionFilter.catch.bind(this.appExceptionFilter));
   }
 

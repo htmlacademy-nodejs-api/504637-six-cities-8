@@ -4,6 +4,7 @@ import { fillDTO } from '../../helpers/index.js';
 import { ILogger } from '../../libs/logger/logger.interface.js';
 import { BaseController } from '../../libs/rest/controller/index.js';
 import { DocumentExistsMiddleware } from '../../libs/rest/middleware/document-exists.middleware.js';
+import { PrivateRouteMiddleware } from '../../libs/rest/middleware/private-route.middleware.js';
 import { ValidateDtoMiddleware } from '../../libs/rest/middleware/validate-dto.middleware.js';
 import { ValidateObjectIdMiddleware } from '../../libs/rest/middleware/validate-objectid.middleware.js';
 import { HttpMethod } from '../../libs/rest/types/http-methods.enum.js';
@@ -24,26 +25,53 @@ export class OfferController extends BaseController {
     this.logger.info('Register routes for OfferController');
 
     this.addRoute({ path: '/', method: HttpMethod.GET, handler: this.findAll });
-    this.addRoute({ path: '/', method: HttpMethod.POST, handler: this.create, middlewares: [new ValidateDtoMiddleware(CreateOfferDto)] });
-    this.addRoute({ path: '/:offerId', method: HttpMethod.GET, handler: this.findById, middlewares: [
-      new ValidateObjectIdMiddleware('offerId'),
-      new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
-    ] });
-    this.addRoute({ path: '/:offerId', method: HttpMethod.PATCH, handler: this.update, middlewares: [
-      new ValidateObjectIdMiddleware('offerId'),
-      new ValidateDtoMiddleware(UpdateOfferDto),
-      new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
-    ] });
-    this.addRoute({ path: '/:offerId', method: HttpMethod.DELETE, handler: this.delete, middlewares: [
-      new ValidateObjectIdMiddleware('offerId'),
-      new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
-    ] });
+    this.addRoute({
+      path: '/',
+      method: HttpMethod.POST,
+      handler: this.create,
+      middlewares: [new PrivateRouteMiddleware(), new ValidateDtoMiddleware(CreateOfferDto)],
+    });
+    this.addRoute({
+      path: '/:offerId',
+      method: HttpMethod.GET,
+      handler: this.findById,
+      middlewares: [
+        new ValidateObjectIdMiddleware('offerId'),
+        new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
+      ] });
+    this.addRoute({
+      path: '/:offerId',
+      method: HttpMethod.PATCH,
+      handler: this.update,
+      middlewares: [
+        new PrivateRouteMiddleware(),
+        new ValidateObjectIdMiddleware('offerId'),
+        new ValidateDtoMiddleware(UpdateOfferDto),
+        new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
+      ],
+    });
+    this.addRoute({
+      path: '/:offerId',
+      method: HttpMethod.DELETE,
+      handler: this.delete,
+      middlewares: [
+        new PrivateRouteMiddleware(),
+        new ValidateObjectIdMiddleware('offerId'),
+        new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
+      ],
+    });
     this.addRoute({ path: '/premium', method: HttpMethod.GET, handler: this.findAllPremium });
     this.addRoute({ path: '/featured', method: HttpMethod.GET, handler: this.findAllFeatured });
-    this.addRoute({ path: '/:offerId/featured', method: HttpMethod.PATCH, handler: this.addToFeatured, middlewares: [
-      new ValidateObjectIdMiddleware('offerId'),
-      new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
-    ] });
+    this.addRoute({
+      path: '/:offerId/featured',
+      method: HttpMethod.PATCH,
+      handler: this.addToFeatured,
+      middlewares: [
+        new PrivateRouteMiddleware(),
+        new ValidateObjectIdMiddleware('offerId'),
+        new DocumentExistsMiddleware(this.offerService, 'Offer', 'offerId'),
+      ],
+    });
   }
 
   public async findAll(_req: Request, res: Response): Promise<void> {

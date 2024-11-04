@@ -12,4 +12,5 @@ export interface IUserService {
     createUserDto: CreateUserDto,
     salt: string
   ): Promise<DocumentType<UserEntity>>;
+  findById(userId: string): Promise<DocumentType<UserEntity> | null>;
 }

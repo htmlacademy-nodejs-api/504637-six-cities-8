@@ -34,6 +34,10 @@ export class UserService implements IUserService {
     return this.userModel.findOne({ email });
   }
 
+  public async findById(userId: string): Promise<DocumentType<UserEntity> | null> {
+    return this.userModel.findById(userId);
+  }
+
   public async findOrCreate(createUserDto: CreateUserDto, salt: string): Promise<DocumentType<UserEntity>> {
     const existedUser = await this.findByEmail(createUserDto.email);
 

@@ -20,8 +20,8 @@ export class CommentService implements ICommentService {
     return this.commentModel.find({ offerId }).exec();
   }
 
-  public async create(offerId: string, dto: CreateCommentDto): Promise<DocumentType<CommentEntity>> {
-    const comment = await this.commentModel.create(dto);
+  public async create(offerId: string, dto: CreateCommentDto, userId: string): Promise<DocumentType<CommentEntity>> {
+    const comment = await this.commentModel.create({ ...dto, user: userId });
     await this.offerService.incCommentCount(offerId);
     this.logger.info(`New comment created for offer ${offerId}`);
     return comment;

@@ -1,104 +1,16 @@
-<!-- # Как работать над проектом
-
-## Окружение
-
-Для удобства работы над проектом используются инструменты из **Node.js** и **npm**. Все необходимые настройки произведены. Убедитесь, что на рабочем компьютере установлен актуальный LTS релиз Node.js**. Актуальная версия **Node.js** указана в файле `package.json` в поле `node`. Затем, в терминале, перейдите в директорию с проектом и _единожды_ запустите команду:
-
-```bash
-npm install
-```
-
-Команда запустит процесс установки зависимостей проекта из **npm**.
-
-### Сценарии
-
-В `package.json` предопределено несколько сценариев.
-
-#### Скомпилировать проект
-
-```bash
-npm run compile
-```
-
-Создаст директорию `dist` и скомпилирует проект.
-
-#### Удалить скомпилированный проект
-
-```bash
-npm run clean
-```
-
-Удаляет директорию `dist`. Используется перед компиляцией.
-
-#### Собрать проект
-
-```bash
-npm run build
-```
-
-Выполняет сборку проекта: удаляет ранее скомпилированный проект и компилирует заново.
-
-#### Проверить линтером
-
-```bash
-npm run lint
-```
-
-Запуск проверки проекта статическим анализатором кода **ESLint**.
-
-Линтер проверяет файлы только внутри директории `src`.
-
-**Обратите внимание**, при запуске данной команды, ошибки выводятся в терминал.
-
-#### Запустить ts-модуль без компиляции
-
-```bash
-npm run ts -- <Путь к модулю с ts-кодом>
-```
-
-Пакет `ts-node` позволяет выполнить TS-код в Node.js без предварительной компиляции. Используется только на этапе разработки.
-
-#### Запустить проект
-
-```bash
-npm start
-```
-
-Пакет `json-server` позволяет запустить локальный сервер с данными. Используется только на этапе разработки.
-
-#### Запустить локальный сервер
-
-```bash
-npm run mock:server
-```
-
-## Структура проекта
-
-### Директория `src`
-
-Исходный код проекта: компоненты, модули и так далее. Структура директории `src` может быть произвольной.
-
-### Файл `Readme.md`
-
-Инструкции по работе с учебным репозиторием.
-
-### Файл `Contributing.md`
-
-Советы и инструкции по внесению изменений в учебный репозиторий. -->
-
 ### Environment variables
   Make sure you have all your environment variables in `.env` file. Otherwise, the project will not start.
   
 ```bash
-PORT=4000 - Порт, на котором будет запущен сервер
-SALT=salty - Соль для хэширования паролей
-DB_HOST=localhost - Хост базы данных
-DB_USER=mongo - Имя пользователя для базы данных
-DB_PASSWORD=mongo - Пароль для базы данных
-DB_PORT=27017 - Порт базы данных
-DB_NAME=six-cities - Имя базы данных
-UPLOAD_DIRECTORY=/Users/bega/projects/edu/node-htmlacademy/six-cities/upload/ - Директория для загрузки файлов
-JWT_SECRET=secret - Секретный ключ для JWT
+PORT=4000 - The port on which the server will run
+SALT=salty - Salt for hashing passwords
+DB_HOST=localhost - The database host
+DB_USER=mongo - The database user name
+DB_PASSWORD=mongo - The database password
+DB_PORT=27017 - The database port
+DB_NAME=six-cities - The database name
+UPLOAD_DIRECTORY=/Users/bega/projects/edu/node-htmlacademy/six-cities/upload/ - The directory for uploading files
+JWT_SECRET=secret - The secret key for JWT
 ```
 
 ### Start the project

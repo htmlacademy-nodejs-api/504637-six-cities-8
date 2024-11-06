@@ -25,8 +25,8 @@ export function fillDTO<T, V>(dto: ClassConstructor<T>, plainObject: V) {
   return plainToInstance(dto, plainObject, { excludeExtraneousValues: true });
 }
 
-export function createErrorObject(errorType: ApplicationError, message: string, details: TValidationErrorField[] = []) {
-  return { errorType, message, details };
+export function createErrorObject(errorType: ApplicationError, error: string, details: TValidationErrorField[] = []) {
+  return { errorType, error, details };
 }
 
 export function reduceValidationErrors(errors: ValidationError[]): TValidationErrorField[] {

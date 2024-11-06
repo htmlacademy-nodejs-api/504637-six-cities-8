@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { jwtVerify, } from 'jose';
+import { jwtVerify } from 'jose';
 import { createSecretKey } from 'node:crypto';
 import { TTokenPayload } from '../../../modules/auth/types/token-payload.js';
 import { HttpError } from '../errors/http-error.js';

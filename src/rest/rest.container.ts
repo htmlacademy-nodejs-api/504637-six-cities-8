@@ -7,7 +7,9 @@ import { MongoDatabaseClient } from '../shared/libs/database-client/mongo-databa
 import { ILogger } from '../shared/libs/logger/logger.interface.js';
 import { PinoLogger } from '../shared/libs/logger/pino-logger.js';
 import { IExceptionFilter } from '../shared/libs/rest/exception-filter/exception-filter.interface.js';
-import { AppExceptionFilter } from '../shared/libs/rest/exception-filter/index.js';
+import { HttpErrorExceptionFilter } from '../shared/libs/rest/exception-filter/http-error.exception-filter.js';
+import { AppExceptionFilter, ValidationExceptionFilter } from '../shared/libs/rest/exception-filter/index.js';
+import { AuthExceptionFilter } from '../shared/modules/auth/auth.exception-filter.js';
 import { Component } from '../shared/types/component.enum.js';
 import { RestApplication } from './rest.application.js';
 
@@ -19,6 +21,9 @@ export function createRestApplicationContainer() {
   restContainer.bind<IConfig<TRestSchema>>(Component.Config).to(RestConfig).inSingletonScope();
   restContainer.bind<IDatabaseClient>(Component.DatabaseClient).to(MongoDatabaseClient).inSingletonScope();
   restContainer.bind<IExceptionFilter>(Component.ExceptionFilter).to(AppExceptionFilter).inSingletonScope();
+  restContainer.bind<IExceptionFilter>(Component.HttpErrorExceptionFilter).to(HttpErrorExceptionFilter).inSingletonScope();
+  restContainer.bind<IExceptionFilter>(Component.ValidationExceptionFilter).to(ValidationExceptionFilter).inSingletonScope();
+  restContainer.bind<IExceptionFilter>(Component.AuthExceptionFilter).to(AuthExceptionFilter).inSingletonScope();
 
   return restContainer;
 }

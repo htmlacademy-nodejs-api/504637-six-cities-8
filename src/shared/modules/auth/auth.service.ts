@@ -8,7 +8,7 @@ import { Component } from '../../types/component.enum.js';
 import { UserEntity } from '../user/user.entity.js';
 import { IUserService } from '../user/user.service.interface.js';
 import { IAuthService } from './auth-service.interface.js';
-import { JWT_ALGORITHM, JWT_EXPIRES_IN } from './auth.contants.js';
+import { JWT_CONFIG } from './auth.contants.js';
 import { LoginDto } from './dto/login.dto.js';
 import { UserNotFoundException } from './errors/user-not-found.exception.js';
 import { UserPasswordIncorrectException } from './errors/user-password-incorrect.exception.js';
@@ -36,9 +36,9 @@ export class AuthService implements IAuthService {
     this.logger.info(`Create token for ${user.email}`);
 
     return new SignJWT(tokenPayload)
-      .setProtectedHeader({ alg: JWT_ALGORITHM })
+      .setProtectedHeader({ alg: JWT_CONFIG.ALGORITHM })
       .setIssuedAt()
-      .setExpirationTime(JWT_EXPIRES_IN)
+      .setExpirationTime(JWT_CONFIG.EXPIRES_IN)
       .sign(secretKey);
   }
 

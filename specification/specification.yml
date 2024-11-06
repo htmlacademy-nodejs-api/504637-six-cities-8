@@ -19,7 +19,7 @@ paths:
       summary: Create a new offer
       description: Create a new rental offer by providing the necessary data
       tags:
-        - offers
+        - Offers
       responses:
         '201':
           description: Offer created successfully
@@ -34,7 +34,7 @@ paths:
       summary: Get list of offers
       description: Retrieve a list of available rental offers
       tags:
-        - offers
+        - Offers
       responses:
         '200':
           description: Successful response
@@ -76,7 +76,7 @@ paths:
       summary: Delete an offer
       description: Delete an existing rental offer
       tags:
-        - offers
+        - Offers
       parameters:
         - name: offerId
           in: path
@@ -97,7 +97,7 @@ paths:
       summary: Get offer details
       description: Retrieve detailed information about a specific offer
       tags:
-        - offers
+        - Offers
       parameters:
         - name: offerId
           in: path
@@ -120,7 +120,7 @@ paths:
       summary: Get comments for an offer
       description: Retrieve a list of comments for a specific offer
       tags:
-        - comments
+        - Comments
       parameters:
         - name: offerId
           in: path
@@ -144,7 +144,7 @@ paths:
       summary: Add a comment to an offer
       description: Add a new comment to a specific offer
       tags:
-        - comments
+        - Comments
       parameters:
         - name: offerId
           in: path
@@ -173,7 +173,7 @@ paths:
       summary: Create a new user
       description: Register a new user in the system
       tags:
-        - users
+        - Users
       requestBody:
         required: true
         content:
@@ -196,7 +196,7 @@ paths:
       summary: User login
       description: Authenticate user and get access token
       tags:
-        - auth
+        - Auth
       requestBody:
         required: true
         content:
@@ -219,7 +219,7 @@ paths:
       summary: User logout
       description: Invalidate user's access token
       tags:
-        - auth
+        - Auth
       security:
         - bearerAuth: []
       responses:
@@ -234,7 +234,7 @@ paths:
       summary: Get current user info
       description: Retrieve information about the currently authenticated user
       tags:
-        - users
+        - Users
       security:
         - bearerAuth: []
       responses:
@@ -253,7 +253,7 @@ paths:
       summary: Get premium offers for a city
       description: Retrieve a list of premium offers for a specific city
       tags:
-        - offers
+        - Offers
       parameters:
         - name: city
           in: query
@@ -276,7 +276,7 @@ paths:
       summary: Get favorite offers
       description: Retrieve a list of offers added to favorites by the authenticated user
       tags:
-        - favorites
+        - Favorites
       security:
         - bearerAuth: []
       responses:
@@ -297,7 +297,7 @@ paths:
       summary: Add offer to favorites
       description: Add an offer to the authenticated user's favorites
       tags:
-        - favorites
+        - Favorites
       security:
         - bearerAuth: []
       parameters:
@@ -321,7 +321,7 @@ paths:
       summary: Remove offer from favorites
       description: Remove an offer from the authenticated user's favorites
       tags:
-        - favorites
+        - Favorites
       security:
         - bearerAuth: []
       parameters:

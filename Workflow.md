@@ -1,4 +1,4 @@
-# Как работать над проектом
+<!-- # Как работать над проектом
 
 ## Окружение
 
@@ -84,8 +84,43 @@ npm run mock:server
 
 ### Файл `Contributing.md`
 
-Советы и инструкции по внесению изменений в учебный репозиторий.
+Советы и инструкции по внесению изменений в учебный репозиторий. -->
 
-### Остальное
+### Environment variables
+  Make sure you have all your environment variables in `.env` file. Otherwise, the project will not start.
+  
+```bash
+PORT=4000 - Порт, на котором будет запущен сервер
+SALT=salty - Соль для хэширования паролей
+DB_HOST=localhost - Хост базы данных
+DB_USER=mongo - Имя пользователя для базы данных
+DB_PASSWORD=mongo - Пароль для базы данных
+DB_PORT=27017 - Порт базы данных
+DB_NAME=six-cities - Имя базы данных
+UPLOAD_DIRECTORY=/Users/bega/projects/edu/node-htmlacademy/six-cities/upload/ - Директория для загрузки файлов
+JWT_SECRET=secret - Секретный ключ для JWT
+```
 
-Все остальные файлы в проекте являются служебными. Пожалуйста, не удаляйте и не изменяйте их самовольно. Только если того требует задание или наставник.
+### Start the project
+
+1. Install dependencies
+```bash 
+npm install
+```
+
+2. Build project
+```bash
+npm run build
+```
+
+3. Start project
+```bash
+npm run start:rest
+```
+
+### All scenarios in `package.json`
+
+1. Install dependencies
+```bash 
+npm install
+```

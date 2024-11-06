@@ -15,5 +15,8 @@ export const Component = {
   CommentModel: Symbol.for('CommentModel'),
   ExceptionFilter: Symbol.for('ExceptionFilter'),
   AuthService: Symbol.for('AuthService'),
-  AuthExceptionFilter: Symbol.for('AuthExceptionFilter')
+  AppExceptionFilter: Symbol.for('AppExceptionFilter'),
+  AuthExceptionFilter: Symbol.for('AuthExceptionFilter'),
+  HttpErrorExceptionFilter: Symbol.for('HttpErrorExceptionFilter'),
+  ValidationExceptionFilter: Symbol.for('ValidationExceptionFilter'),
 } as const;
